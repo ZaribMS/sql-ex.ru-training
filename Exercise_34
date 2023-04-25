@@ -1,0 +1,9 @@
+select 
+  name 
+from 
+  ships s 
+  join classes c on c.class = s.class 
+where 
+  displacement > 35000 
+  and launched >= 1922 
+  and type = 'bb'
