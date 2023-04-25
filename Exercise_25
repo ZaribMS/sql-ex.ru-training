@@ -1,0 +1,53 @@
+with asd as (
+  select 
+    model, 
+    speed 
+  from 
+    (
+      Select 
+        * 
+      from 
+        pc 
+      where 
+        ram = (
+          select 
+            min(ram) 
+          from 
+            pc
+        )
+    ) t 
+  where 
+    speed = (
+      select 
+        max(speed) 
+      from 
+        (
+          Select 
+            * 
+          from 
+            pc 
+          where 
+            ram = (
+              select 
+                min(ram) 
+              from 
+                pc
+            )
+        ) tr
+    )
+) 
+
+select 
+  distinct maker 
+from 
+  product 
+  join asd on product.model = asd.model 
+where 
+  maker in (
+    select 
+      maker 
+    from 
+      product 
+    where 
+      type = 'printer'
+  )
