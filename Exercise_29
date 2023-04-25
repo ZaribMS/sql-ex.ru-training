@@ -1,0 +1,9 @@
+Select 
+  coalesce(i.point, o.point), 
+  coalesce(i.date, o.date), 
+  inc, 
+  out 
+from 
+  income_o i full 
+  join outcome_o o on o.point = i.point 
+  and i.date = o.date
