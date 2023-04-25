@@ -1,0 +1,14 @@
+select 
+  count(*) count 
+from 
+  (
+    Select 
+      maker, 
+      count(model) count 
+    from 
+      product 
+    group by 
+      maker 
+    having 
+      count(model) = 1
+  ) t
