@@ -1,0 +1,8 @@
+Select 
+  distinct pc1.hd 
+from 
+  pc pc1, 
+  pc pc2 
+where 
+  pc1.hd = pc2.hd 
+  and pc1.code <> pc2.code
