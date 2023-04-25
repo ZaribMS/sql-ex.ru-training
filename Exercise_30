@@ -1,0 +1,31 @@
+with asd as (
+  select 
+    point, 
+    date, 
+    sum(inc) inc 
+  from 
+    income 
+  group by 
+    point, 
+    date
+), 
+asd1 as (
+  select 
+    point, 
+    date, 
+    sum(out) out 
+  from 
+    outcome 
+  group by 
+    point, 
+    date
+) 
+select 
+  coalesce(asd.point, asd1.point) point, 
+  coalesce(asd.date, asd1.date) date, 
+  out, 
+  inc 
+from 
+  asd full 
+  join asd1 on asd.point = asd1.point 
+  and asd.date = asd1.date
