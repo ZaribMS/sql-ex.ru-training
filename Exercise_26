@@ -1,0 +1,19 @@
+select 
+  avg(price) AVG_price 
+from 
+  product 
+  join (
+    select 
+      model, 
+      price 
+    from 
+      laptop 
+    union all 
+    select 
+      model, 
+      price 
+    from 
+      pc
+  ) t on t.model = product.model 
+where 
+  maker = 'A'
