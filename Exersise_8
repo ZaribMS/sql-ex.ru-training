@@ -1,0 +1,13 @@
+select 
+  maker 
+from 
+  product 
+where 
+  type = 'PC' 
+EXCEPT 
+select 
+  maker 
+from 
+  product 
+where 
+  type = 'Laptop'
