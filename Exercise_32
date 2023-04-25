@@ -1,0 +1,25 @@
+select 
+  country, 
+  cast(
+    avg(
+      power(bore, 3)/ 2
+    ) as numeric(6, 2)
+  ) mw 
+from 
+  classes 
+  join (
+    Select 
+      ship, 
+      class 
+    from 
+      outcomes o 
+      join classes c on c.class = o.ship 
+    union 
+    select 
+      name, 
+      class 
+    from 
+      ships
+  ) t on classes.class = t.class 
+group by 
+  country
