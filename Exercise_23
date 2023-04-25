@@ -1,0 +1,15 @@
+Select 
+  maker 
+from 
+  product as p 
+  join laptop as l on p.model = l.model 
+where 
+  l.speed >= 750 
+intersect 
+Select 
+  maker 
+from 
+  product as p1 
+  join pc on p1.model = pc.model 
+where 
+  pc.speed >= 750
